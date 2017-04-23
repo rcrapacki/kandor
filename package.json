@@ -100,7 +100,8 @@
     "requirejs": "~2.1.11",
     "phantomjs-prebuilt": "^2.1.4",
     "proxyquire": "^1.0.1",
-    "supertest": "^1.1.0"
+    "supertest": "^1.1.0",
+    "grunt-contrib-sass": "~1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.0",
