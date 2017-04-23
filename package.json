@@ -115,7 +115,7 @@
     "npm": "^2.14.20"
   },
   "scripts": {
-    "postinstall": "grunt uglify",
+    "postinstall": "grunt serve",
     "start": "node server",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
