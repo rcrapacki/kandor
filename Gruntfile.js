@@ -828,14 +828,5 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  /*grunt.loadNpmTasks('grunt-express-server');
-  grunt.loadNpmTasks('grunt-selenium-webdriver');
-  grunt.loadNpmTasks('grunt-cucumber');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-bower-task');*/
-
-  grunt.registerTask('heroku:production', 'clean less mincss uglify');
+  grunt.registerTask('heroku:production', 'build');
 };
