@@ -831,9 +831,18 @@ module.exports = function (grunt) {
   grunt.registerTask('heroku:production', 'build');
 
   grunt.registerTask('background', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'express-keepalive']);
-    }
+    grunt.task.run([
+      'clean:server',
+      'env:all',
+      'concurrent:pre',
+      'concurrent:server',
+      'injector',
+      'wiredep:client',
+      'postcss',
+      'express:dev',
+      'wait',
+      'watch'
+    ]);
   });
 
 };
