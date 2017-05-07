@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">POA Map:</h1>
-        <div map-lazy-load="https://maps.google.com/maps/api/js">
+        <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="AIzaSyBSDE6HlmoYd9x1_ZUXRsON-jiiUUto_k4">
           <ng-map center="-30.034647,-51.217658" zoom="10">
             <marker name="circle" ng-if="query.cluster_id != ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers | filter: query.cluster_id:true" 
               no-watcher="true"
