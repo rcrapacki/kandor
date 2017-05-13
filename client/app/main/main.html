@@ -5,22 +5,29 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">POA Map:</h1>
+        <ul class="nav nav-pills">
+          <li role="presentation" ng-class="$ctrl.selected_algorithm == 'baseline' ? active : inactive" data-toggle="tab" ng-click="$ctrl.refreshClusters('baseline')"><a href="#">baseline</a></li>
+          <li role="presentation" ng-class="selected_algorithm == 'category' ? active : inactive" data-toggle="tab" ng-click="$ctrl.refreshClusters('category')"><a href="#">category</a></li>
+          <li role="presentation" ng-class="selected_algorithm == 'social_popularity' ? active : inactive" data-toggle="tab" ng-click="$ctrl.refreshClusters('social_popularity')"><a href="#">social_popularity</a></li>
+          <li role="presentation" ng-class="selected_algorithm == 'rating' ? active : inactive" data-toggle="tab" ng-click="$ctrl.refreshClusters('rating')"><a href="#">rating</a></li>
+          <li role="presentation" ng-class="selected_algorithm == 'popular_times' ? active : inactive" data-toggle="tab" ng-click="$ctrl.refreshClusters('popular_times')"><a href="#">popular_times</a></li>
+        </ul>
         <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSDE6HlmoYd9x1_ZUXRsON-jiiUUto_k4">
           <ng-map center="-30.034647,-51.217658" zoom="10">
-            <marker name="circle" ng-if="query.cluster_id != ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers | filter: query.cluster_id:true" 
+            <!--marker name="circle" ng-if="query.cluster_id != ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers | filter: query.cluster_id:true" 
               no-watcher="true"
               position="{{marker.position}}"
               title="{{marker.name}}"
               icon="{path: 'CIRCLE', scale: 2, strokeColor:'{{marker.color}}', strokeOpacity:0.8, strokeWeight:2, fillColor:'{marker.color}}', fillOpacity:0.35}">
-            </marker>
-            <marker ng-if="query.cluster_id == ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers" 
+            </marker-->
+            <!--marker ng-if="query.cluster_id == ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers" 
               no-watcher="true"
               position="{{marker.position}}"
               title="{{marker.name}}"
               icon="{path: 'CIRCLE', scale: 2, strokeColor:'{marker.color}}', strokeOpacity:0.8, strokeWeight:2, fillColor:'{marker.color}}', fillOpacity:0.35}">
-            </marker>
-            <!--marker ng-if="query.cluster_id != ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers | filter: query.cluster_id:true" position="{{ marker.position }}" title="{{ marker.name }}" icon="{{ marker.icon }}"></marker-->
-            <!--marker ng-if="query.cluster_id == ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers" position="{{ marker.position }}" title="{{ marker.name }}" icon="{{ marker.icon }}"></marker-->
+            </marker-->
+            <marker ng-if="query.cluster_id != ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers | filter: query.cluster_id:true" position="{{ marker.position }}" title="{{ marker.name }}" icon="{{ marker.icon }}"></marker>
+            <marker ng-if="query.cluster_id == ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers" position="{{ marker.position }}" title="{{ marker.name }}" icon="{{ marker.icon }}"></marker>
             <shape ng-if="$ctrl.cluster_polygon_array.length > 0" name="polygon" 
               paths="{{ $ctrl.cluster_polygon_array }}"
               stroke-color="#FF0000"
@@ -100,23 +107,6 @@
       </div>
   <div class="row">
     <div class="col-md-6">
-      <!--form class="form-inline">
-        <input ng-model="query.cluster_id" type="text"
-          placeholder="Filter by cluster id" autofocus>
-      </form-->
-      <p>Select Dimension to visualize</p>
-      <form class="form-inline">
-        <select ng-model="algorithm" type="text"
-          placeholder="Filter by algorithm" autofocus>
-          <option>baseline</option>
-          <option>category</option>
-          <option>social_popularity</option>
-          <option>rating</option>
-          <option>popular_times</option>
-        </select>
-        <button class="btn" ng-click="$ctrl.refreshClusters(algorithm)">Refresh</button>
-      </form>
-
       <p>Select Neighborhood to visualize</p>
       <form class="form-inline">
         <select ng-model="selected_neighborhood_name" type="text" autofocus>
