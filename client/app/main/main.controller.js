@@ -4,9 +4,10 @@
 
 class MainController {
 
-  constructor($http, $scope, socket) {
+  constructor($http, $scope, socket, NgMap) {
     this.$http = $http;
     this.socket = socket;
+    this.NgMap = NgMap;
     this.clusters = [];
     this.venue_to_cluster_mapping = {};
     this.cluster_to_icon_mapping = {};
@@ -29,8 +30,10 @@ class MainController {
   }
 
   $onInit() {
-    this.refreshClusters('baseline');
-    this.refreshNeighborhoods();
+    this.NgMap.getMap("map").then(response => {
+      this.refreshClusters('baseline');
+      this.refreshNeighborhoods();
+    });
   }
 
   haversine = function(lat1, lon1, lat2, lon2) {
