@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">POA Map:</h1>
+      <h1 class="page-header">KANDOR</h1>
         <ul class="nav nav-pills">
           <li role="presentation" ng-class="$ctrl.selected_algorithm=='baseline' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('baseline')"><a href="#">Similaridade Social</a></li>
           <li role="presentation" ng-class="$ctrl.selected_algorithm=='category' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('category')"><a href="#">Diversidade de Usuários</a></li>
@@ -59,47 +59,47 @@
           </thead>
           <tbody>
             <tr class="active">
-              <td>Checkin Count Average</td>
+              <td>Média de Checkins</td>
               <td>{{$ctrl.selected_cluster.meta_data.checkin_count_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='category' ? 'active' : ''">
-              <td>User Count Average</td>
+              <td>Média de Usuários</td>
               <td>{{$ctrl.selected_cluster.meta_data.unique_users_count_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
-              <td>Rating Average</td>
+              <td>Média de Notas de Avaliações</td>
               <td>{{$ctrl.selected_cluster.meta_data.rating_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
-              <td>Total Rating Average</td>
+              <td>Média de Notas Somadas de Avaliações</td>
               <td>{{$ctrl.selected_cluster.meta_data.total_rating_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
-              <td>Review Count Average</td>
+              <td>Média de Avaliações</td>
               <td>{{$ctrl.selected_cluster.meta_data.review_count_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='social_popularity' ? 'active' : ''">
-              <td>Like Count Average</td>
+              <td>Média de Likes</td>
               <td>{{$ctrl.selected_cluster.meta_data.like_count_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='social_popularity' ? 'active' : ''">
-              <td>Comment Count Average</td>
+              <td>Média de Comentários</td>
               <td>{{$ctrl.selected_cluster.meta_data.comment_count_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
-              <td>Dawn Checkin Count Average</td>
+              <td>Média de Checkins de Madrugada</td>
               <td>{{$ctrl.selected_cluster.meta_data.dawn_checkin_count_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
-              <td>Morning Checkin Count Average</td>
+              <td>Média de Checkins de Manhã</td>
               <td>{{$ctrl.selected_cluster.meta_data.morning_checkin_count_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
-              <td>Afternoon Checkin Count Average</td>
+              <td>Média de Checkins de Tarde</td>
               <td>{{$ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
-              <td>Evening Checkin Count Average</td>
+              <td>Média de Checkins de Noite</td>
               <td>{{$ctrl.selected_cluster.meta_data.evening_checkin_count_avg}}</td>
             </tr>
           </tbody>
@@ -107,12 +107,12 @@
       </div>
   <div class="row">
     <div class="col-md-6">
-      <p>Select Neighborhood to visualize</p>
+      <p>Selecione o seu Bairro</p>
       <form class="form-inline">
         <select ng-model="selected_neighborhood_name" type="text" autofocus>
           <option ng-repeat="option in $ctrl.neighborhoods" value="{{ option.name }}">{{ option.name }}</option>
         </select>
-        <button class="btn" ng-click="$ctrl.triggerNeighborhoods(selected_neighborhood_name, $ctrl)">Highlight</button>
+        <button class="btn" ng-click="$ctrl.triggerNeighborhoods(selected_neighborhood_name, $ctrl)">Selecionar</button>
       </form>
     </div>
   </div>
