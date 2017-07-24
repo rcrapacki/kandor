@@ -235,6 +235,11 @@ class MainController {
       // 2nd parameter is concavity, so we pass a big number to ensure a convex polygon
       ctrl.neighborhood_polygon_array = hull(ctrl.selected_neighborhood.coordinates, 10000000000);
 
+      this.NgMap.getMap("map").then(function (map) {
+        map.setZoom(13);
+        map.panTo(new google.maps.LatLng(ctrl.selected_neighborhood.coordinates[0][0], ctrl.selected_neighborhood.coordinates[0][1]));
+      });
+
 
       /*ctrl.cluster_polygon_array = [
         [ctrl.cluster_to_polygon_arrays[cluster_id]['max_lat'], ctrl.cluster_to_polygon_arrays[cluster_id]['min_lon']],
