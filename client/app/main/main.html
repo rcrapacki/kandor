@@ -60,47 +60,47 @@
           <tbody>
             <tr class="active">
               <td>Média de Checkins</td>
-              <td>{{$ctrl.selected_cluster.meta_data.checkin_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.checkin_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='category' ? 'active' : ''">
               <td>Média de Usuários</td>
-              <td>{{$ctrl.selected_cluster.meta_data.unique_users_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.unique_user_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
               <td>Média de Notas de Avaliações</td>
-              <td>{{$ctrl.selected_cluster.meta_data.rating_avg}}</td>
+              <td>{{$ctrl.score_mapping.rating_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
               <td>Média de Notas Somadas de Avaliações</td>
-              <td>{{$ctrl.selected_cluster.meta_data.total_rating_avg}}</td>
+              <td>{{$ctrl.score_mapping.total_rating_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
               <td>Média de Avaliações</td>
-              <td>{{$ctrl.selected_cluster.meta_data.review_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.review_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='social_popularity' ? 'active' : ''">
               <td>Média de Likes</td>
-              <td>{{$ctrl.selected_cluster.meta_data.like_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.like_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='social_popularity' ? 'active' : ''">
               <td>Média de Comentários</td>
-              <td>{{$ctrl.selected_cluster.meta_data.comment_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.comment_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
               <td>Média de Checkins de Madrugada</td>
-              <td>{{$ctrl.selected_cluster.meta_data.dawn_checkin_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.dawn_checkin_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
               <td>Média de Checkins de Manhã</td>
-              <td>{{$ctrl.selected_cluster.meta_data.morning_checkin_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.morning_checkin_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
               <td>Média de Checkins de Tarde</td>
-              <td>{{$ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.afternoon_checkin_score}}</td>
             </tr>
             <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
               <td>Média de Checkins de Noite</td>
-              <td>{{$ctrl.selected_cluster.meta_data.evening_checkin_count_avg}}</td>
+              <td>{{$ctrl.score_mapping.evening_checkin_score}}</td>
             </tr>
           </tbody>
         </table>

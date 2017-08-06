@@ -65,6 +65,7 @@ class MainController {
     if (ctrl.cluster_polygon_array.length > 0) {
       ctrl.cluster_polygon_array = [];
       ctrl.selected_cluster = null;
+      ctrl.score_mapping = null;
     } else {
       var points = []
       angular.forEach(ctrl.cluster_to_polygon_arrays[cluster_id], function(polygon_array, key) {
@@ -74,6 +75,139 @@ class MainController {
       // 2nd parameter is concavity, so we pass a big number to ensure a convex polygon
       ctrl.cluster_polygon_array = hull(points, 10000000000);
 
+      ctrl.score_mapping = {};
+
+      var diffToMin = Math.abs(ctrl.selected_cluster.meta_data.review_count_avg - ctrl.minReviewCount);
+      var diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.review_count_avg - ctrl.avgReviewCount);
+      var diffToMax = Math.abs(ctrl.selected_cluster.meta_data.review_count_avg - ctrl.maxReviewCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.review_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.review_score = 'Média';
+      } else {
+        ctrl.score_mapping.review_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.checkin_count_avg - ctrl.minCheckinCount);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.checkin_count_avg - ctrl.avgCheckinCount);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.checkin_count_avg - ctrl.maxCheckinCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.checkin_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.checkin_score = 'Média';
+      } else {
+        ctrl.score_mapping.checkin_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.total_rating_avg - ctrl.minTotalRating);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.total_rating_avg - ctrl.avgTotalRating);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.total_rating_avg - ctrl.maxTotalRating);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.total_rating_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.total_rating_score = 'Média';
+      } else {
+        ctrl.score_mapping.total_rating_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.rating_avg - ctrl.minRating);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.rating_avg - ctrl.avgRating);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.rating_avg - ctrl.maxRating);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.rating_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.rating_score = 'Média';
+      } else {
+        ctrl.score_mapping.rating_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.morning_checkin_count_avg - ctrl.minMorningCheckinCount);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.morning_checkin_count_avg - ctrl.avgMorningCheckinCount);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.morning_checkin_count_avg - ctrl.maxMorningCheckinCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.morning_checkin_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.morning_checkin_score = 'Média';
+      } else {
+        ctrl.score_mapping.morning_checkin_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.dawn_checkin_count_avg - ctrl.minDawnCheckinCount);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.dawn_checkin_count_avg - ctrl.avgDawnCheckinCount);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.dawn_checkin_count_avg - ctrl.maxDawnCheckinCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.dawn_checkin_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.dawn_checkin_score = 'Média';
+      } else {
+        ctrl.score_mapping.dawn_checkin_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg - ctrl.minAfternoonCheckinCount);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg - ctrl.avgAfternoonCheckinCount);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg - ctrl.maxAfternoonCheckinCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.afternoon_checkin_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.afternoon_checkin_score = 'Média';
+      } else {
+        ctrl.score_mapping.afternoon_checkin_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.evening_checkin_count_avg - ctrl.minEveningCheckinCount);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.evening_checkin_count_avg - ctrl.avgEveningCheckinCount);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.evening_checkin_count_avg - ctrl.maxEveningCheckinCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.evening_checkin_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.evening_checkin_score = 'Média';
+      } else {
+        ctrl.score_mapping.evening_checkin_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.comment_count_avg - ctrl.minCommentCount);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.comment_count_avg - ctrl.avgCommentCount);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.comment_count_avg - ctrl.maxCommentCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.comment_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.comment_score = 'Média';
+      } else {
+        ctrl.score_mapping.comment_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.unique_users_count_avg - ctrl.minUniqueUserCount);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.unique_users_count_avg - ctrl.avgUniqueUserCount);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.unique_users_count_avg - ctrl.maxUniqueUserCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.unique_user_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.unique_user_score = 'Média';
+      } else {
+        ctrl.score_mapping.unique_user_score = 'Alta';
+      }
+
+      diffToMin = Math.abs(ctrl.selected_cluster.meta_data.like_count_avg - ctrl.minLikeCount);
+      diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.like_count_avg - ctrl.avgLikeCount);
+      diffToMax = Math.abs(ctrl.selected_cluster.meta_data.like_count_avg - ctrl.maxLikeCount);
+
+      if (diffToMin < diffToAvg && diffToMin < diffToMax) {
+        ctrl.score_mapping.like_score = 'Baixa';
+      } else if (diffToAvg <= diffToMax) {
+        ctrl.score_mapping.like_score = 'Média';
+      } else {
+        ctrl.score_mapping.like_score = 'Alta';
+      }
 
       /*ctrl.cluster_polygon_array = [
         [ctrl.cluster_to_polygon_arrays[cluster_id]['max_lat'], ctrl.cluster_to_polygon_arrays[cluster_id]['min_lon']],
@@ -100,6 +234,29 @@ class MainController {
       var maxLat = null;
       var minLon = null;
       var maxLon = null;
+
+      this.minReviewCount = 99999;
+      this.maxReviewCount = 0;
+      this.minCheckinCount = 99999;
+      this.maxCheckinCount = 0;
+      this.minTotalRating = 99999;
+      this.maxTotalRating = 0;
+      this.minRating = 99999;
+      this.maxRating = 0;
+      this.minMorningCheckinCount = 99999;
+      this.maxMorningCheckinCount = 0;
+      this.minDawnCheckinCount = 99999;
+      this.maxDawnCheckinCount = 0;
+      this.minAfternoonCheckinCount = 99999;
+      this.maxAfternoonCheckinCount = 0;
+      this.minEveningCheckinCount = 99999;
+      this.maxEveningCheckinCount = 0;
+      this.minCommentCount = 99999;
+      this.maxCommentCount = 0;
+      this.minUniqueUserCount = 99999;
+      this.maxUniqueUserCount = 0;
+      this.minLikeCount = 99999;
+      this.maxLikeCount = 0;
 
       angular.forEach(this.clusters, function(cluster, key) {
           angular.forEach(cluster.insta_place_ids, function(venue_id, key) {
@@ -158,7 +315,107 @@ class MainController {
               this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#009999', fillColor: '#009999'}}
               break;
           }
+
+          if (cluster.meta_data.review_count_avg >= this.maxReviewCount) {
+            this.maxReviewCount = cluster.meta_data.review_count_avg;
+          }
+
+          if (cluster.meta_data.review_count_avg <= this.minReviewCount){
+            this.minReviewCount = cluster.meta_data.review_count_avg;
+          }
+
+          if (cluster.meta_data.checkin_count_avg >= this.maxCheckinCount) {
+            this.maxCheckinCount = cluster.meta_data.checkin_count_avg;
+          }
+
+          if (cluster.meta_data.checkin_count_avg <= this.minCheckinCount){
+            this.minCheckinCount = cluster.meta_data.checkin_count_avg;
+          }
+
+          if (cluster.meta_data.total_rating_avg >= this.maxTotalRating) {
+            this.maxTotalRating = cluster.meta_data.total_rating_avg;
+          }
+
+          if (cluster.meta_data.total_rating_avg <= this.minTotalRating){
+            this.minTotalRating = cluster.meta_data.total_rating_avg;
+          }
+
+          if (cluster.meta_data.rating_avg >= this.maxRating) {
+            this.maxRating = cluster.meta_data.rating_avg;
+          }
+
+          if (cluster.meta_data.rating_avg <= this.minRating){
+            this.minRating = cluster.meta_data.rating_avg;
+          }
+
+          if (cluster.meta_data.morning_checkin_count_avg >= this.maxMorningCheckinCount) {
+            this.maxMorningCheckinCount = cluster.meta_data.morning_checkin_count_avg;
+          }
+
+          if (cluster.meta_data.morning_checkin_count_avg <= this.minMorningCheckinCount){
+            this.minMorningCheckinCount = cluster.meta_data.morning_checkin_count_avg;
+          }
+
+          if (cluster.meta_data.dawn_checkin_count_avg >= this.maxDawnCheckinCount) {
+            this.maxDawnCheckinCount = cluster.meta_data.dawn_checkin_count_avg;
+          }
+
+          if (cluster.meta_data.dawn_checkin_count_avg <= this.minDawnCheckinCount){
+            this.minDawnCheckinCount = cluster.meta_data.dawn_checkin_count_avg;
+          }
+
+          if (cluster.meta_data.afternoon_checkin_count_avg >= this.maxAfternoonCheckinCount) {
+            this.maxAfternoonCheckinCount = cluster.meta_data.afternoon_checkin_count_avg;
+          }
+
+          if (cluster.meta_data.afternoon_checkin_count_avg <= this.minAfternoonCheckinCount){
+            this.minAfternoonCheckinCount = cluster.meta_data.afternoon_checkin_count_avg;
+          }
+
+          if (cluster.meta_data.evening_checkin_count_avg >= this.maxEveningCheckinCount) {
+            this.maxEveningCheckinCount = cluster.meta_data.evening_checkin_count_avg;
+          }
+
+          if (cluster.meta_data.evening_checkin_count_avg <= this.minEveningCheckinCount){
+            this.minEveningCheckinCount = cluster.meta_data.evening_checkin_count_avg;
+          }
+
+          if (cluster.meta_data.comment_count_avg >= this.maxCommentCount) {
+            this.maxCommentCount = cluster.meta_data.comment_count_avg;
+          }
+
+          if (cluster.meta_data.comment_count_avg <= this.minCommentCount){
+            this.minCommentCount = cluster.meta_data.comment_count_avg;
+          }
+
+          if (cluster.meta_data.unique_users_count_avg >= this.maxUniqueUserCount) {
+            this.maxUniqueUserCount = cluster.meta_data.unique_users_count_avg;
+          }
+
+          if (cluster.meta_data.unique_users_count_avg <= this.minUniqueUserCount){
+            this.minUniqueUserCount = cluster.meta_data.unique_users_count_avg;
+          }
+
+          if (cluster.meta_data.like_count_avg >= this.maxLikeCount) {
+            this.maxLikeCount = cluster.meta_data.like_count_avg;
+          }
+
+          if (cluster.meta_data.like_count_avg <= this.minLikeCount){
+            this.minLikeCount = cluster.meta_data.like_count_avg;
+          }
       }, this);
+
+      this.avgReviewCount = (this.maxReviewCount + this.minReviewCount) / 2;
+      this.avgCheckinCount = (this.maxCheckinCount + this.minCheckinCount) / 2;
+      this.avgTotalRating = (this.maxTotalRating + this.minTotalRating) / 2;
+      this.avgRating = (this.maxRating + this.minRating) / 2;
+      this.avgMorningCheckinCount = (this.maxMorningCheckinCount + this.minMorningCheckinCount) / 2;
+      this.avgDawnCheckinCount = (this.maxDawnCheckinCount + this.minDawnCheckinCount) / 2;
+      this.avgAfternoonCheckinCount = (this.maxAfternoonCheckinCount + this.minAfternoonCheckinCount) / 2;
+      this.avgEveningCheckinCount = (this.maxEveningCheckinCount + this.minEveningCheckinCount) / 2;
+      this.avgCommentCount = (this.maxCommentCount + this.minCommentCount) / 2;
+      this.avgUniqueUserCount = (this.maxUniqueUserCount + this.minUniqueUserCount) / 2;
+      this.avgLikeCount = (this.maxLikeCount + this.minLikeCount) / 2;
 
       this.$http.get('/api/venues').then(response => {
         this.venues = response.data;
