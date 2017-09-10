@@ -18,7 +18,8 @@
     "angular-ui-router": "~0.2.15",
     "angular-validation-match": "~1.5.2",
     "ngmap": "~1.17.3",
-    "hull": "~0.2.10"
+    "hull": "~0.2.10",
+    "angular-bootstrap": "2.5.0" 
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0"

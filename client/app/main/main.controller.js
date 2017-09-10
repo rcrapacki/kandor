@@ -23,6 +23,7 @@ class MainController {
     this.neighborhood_polygon_array = [];
     this.selected_neighborhood = null;
     this.selected_algorithm = 'baseline';
+    this.sidebar_active = false;
 
     /*$scope.$on('$destroy', function() {
       socket.unsyncUpdates('cluster');
@@ -505,6 +506,11 @@ class MainController {
         [ctrl.cluster_to_polygon_arrays[cluster_id]['max_lat'], ctrl.cluster_to_polygon_arrays[cluster_id]['max_lon']]
       ]*/
     }
+  }
+
+  toggleSidebar = function(ctrl) {
+    ctrl.sidebar_active = ctrl.sidebar_active ? false : true;
+    console.log(ctrl.sidebar_active);
   }
 
   /*addThing() {
