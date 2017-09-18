@@ -4,10 +4,11 @@
 
 class MainController {
 
-  constructor($http, $scope, socket, NgMap) {
+  constructor($http, $scope, socket, NgMap, $timeout) {
     this.$http = $http;
     this.socket = socket;
     this.NgMap = NgMap;
+    this.$timeout = $timeout;
     this.clusters = [];
     this.venue_to_cluster_mapping = {};
     this.cluster_to_icon_mapping = {};
@@ -24,6 +25,7 @@ class MainController {
     this.selected_neighborhood = null;
     this.selected_algorithm = 'baseline';
     this.sidebar_active = false;
+    this.is_loaded = false;
 
     /*$scope.$on('$destroy', function() {
       socket.unsyncUpdates('cluster');
@@ -220,6 +222,7 @@ class MainController {
   }
 
   refreshClusters = function(algorithm) {
+    var self = this;
     this.selected_algorithm = algorithm
     console.log(this.selected_algorithm)
     this.$http.get('/api/clusters?algorithm=' + algorithm).then(response => {
@@ -465,6 +468,11 @@ class MainController {
                                'name': venue.insta_place.name})
           }
         }, this);
+
+        self.$timeout(function () {
+            console.log("finished");
+            self.is_loaded = true;
+        }, 3000);
       });
     });
   }

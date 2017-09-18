@@ -1,6 +1,7 @@
 <header class="hero-unit" id="banner">
 </header>
 
+<div class="loading" ng-show="!$ctrl.is_loaded">Loading&#8230;</div>
 <div class=wrapper>
   <nav id="sidebar" role="navigation" ng-class="$ctrl.sidebar_active ? 'active' : 'navbar navbar-default'">
     <!-- Sidebar Header -->
@@ -22,7 +23,7 @@
         </li>
 
         <li>
-          <p>Selecionar Bairro</p>
+          <p>Selecione o Bairro</p>
           <div class="row">
             <form class="form-inline">
               <select ng-model="selected_neighborhood_name" type="text" autofocus>
