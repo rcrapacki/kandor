@@ -11,8 +11,8 @@
     <!-- Sidebar Links -->
     <ul class="list-unstyled components">
         <li><!-- Link with dropdown items -->
-          <a ng-click="isCollapsed = !isCollapsed">Categorias<span class="caret"></span></a>
-          <ul id="categories" class="list-unstyled" uib-collapse="isCollapsed">
+          <a ng-click="isCategoriesCollapsed = !isCategoriesCollapsed">Categorias<span class="caret"></span></a>
+          <ul id="categories" class="list-unstyled" uib-collapse="isCategoriesCollapsed">
             <li ng-class="$ctrl.selected_algorithm=='baseline' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('baseline')"><a href="#">Similaridade Social</a></li>
             <li ng-class="$ctrl.selected_algorithm=='category' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('category')"><a href="#">Diversidade de Usuários</a></li>
             <li ng-class="$ctrl.selected_algorithm=='social_popularity' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('social_popularity')"><a href="#">Popularidade</a></li>
@@ -21,7 +21,19 @@
           </ul>
         </li>
 
-        <li><a href="#">Selecionar Bairro</a></li>
+        <li>
+          <p>Selecionar Bairro</p>
+          <div class="row">
+            <form class="form-inline">
+              <select ng-model="selected_neighborhood_name" type="text" autofocus>
+                <option ng-repeat="option in $ctrl.neighborhoods" value="{{ option.name }}">{{ option.name }}</option>
+              </select>
+              <button class="btn" ng-click="$ctrl.triggerNeighborhoods(selected_neighborhood_name, $ctrl)">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </form>
+          </div>
+        </li>
     </ul>
   </nav>
   <div class="container">

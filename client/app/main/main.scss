@@ -36,7 +36,6 @@
     min-width: 250px;
     max-width: 250px;
     background: #7386D5;
-    color: #fff;
     transition: all 0.3s;
 }
 
@@ -69,6 +68,7 @@ a, a:hover, a:focus {
     padding: 10px;
     font-size: 1.1em;
     display: block;
+    color: #fff;
 }
 #sidebar ul li a:hover {
     color: #7386D5;
@@ -92,6 +92,11 @@ a, a:hover, a:focus {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #6d7fcc;
+}
+
+#sidebar ul li form {
+    padding-left: 30px !important;
+    width: 150px;
 }
 
 #categories li.active > a {
