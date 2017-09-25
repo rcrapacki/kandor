@@ -225,6 +225,8 @@ class MainController {
     var self = this;
     this.selected_algorithm = algorithm
     console.log(this.selected_algorithm)
+    self.is_loaded = false;
+
     this.$http.get('/api/clusters?algorithm=' + algorithm).then(response => {
       this.clusters = response.data;
       this.markers = [];
