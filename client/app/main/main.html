@@ -2,9 +2,9 @@
 <div class=wrapper>
   <nav id="sidebar" role="navigation" ng-class="$ctrl.sidebar_active ? 'active' : 'navbar navbar-default'">
     <!-- Sidebar Header -->
-    <div class="sidebar-header">
+    <!--div class="sidebar-header">
         <h3>Barra de Opções</h3>
-    </div>
+    </div-->
 
     <!-- Sidebar Links -->
     <ul class="list-unstyled components">
@@ -37,7 +37,7 @@
   <div class="container">
     <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" ng-click="$ctrl.toggleSidebar($ctrl)">
       <i class="glyphicon glyphicon-align-left"></i>
-      Toggle Sidebar
+      Barra de opções
     </button>
     <div class="row">
       <div class="col-lg-12">
@@ -83,53 +83,86 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Metric</th>
-                <th>Value</th>
+                <th>Medida (média entre locais)</th>
+                <th>Valor</th>
               </tr>
             </thead>
             <tbody>
               <tr class="active">
-                <td>Média de Checkins</td>
+                <td>
+                  Quantidade de Checkins
+                  <span tooltip-placement="right" uib-tooltip="Quantidade de Checkins no Instagram no local" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.checkin_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='category' ? 'active' : ''">
-                <td>Média de Usuários</td>
+                <td>
+                  Quantidade de Usuários
+                  <span tooltip-placement="right" uib-tooltip="Quantidades de usuários diferentes que fizeram posts no Instagram no local" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.unique_user_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
-                <td>Média de Notas de Avaliações</td>
+                <td>
+                  Avaliação Geral
+                  <span tooltip-placement="right" uib-tooltip="Avaliação Geral provida pelo Google Places" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.rating_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
-                <td>Média de Notas Somadas de Avaliações</td>
+                <td>
+                  Soma de Avaliações Parciais
+                  <span tooltip-placement="right" uib-tooltip="Soma das avaliações parciais de usuários no Google Places" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.total_rating_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='rating' ? 'active' : ''">
-                <td>Média de Avaliações</td>
+                <td>
+                  Quantidade de Avaliações
+                  <span tooltip-placement="right" uib-tooltip="Quantidade de avaliações no Google Places" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.review_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='social_popularity' ? 'active' : ''">
-                <td>Média de Likes</td>
+                <td>
+                  Quantidade de Likes
+                  <span tooltip-placement="right" uib-tooltip="Quantidade de likes em posts do Instagram no local" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.like_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='social_popularity' ? 'active' : ''">
-                <td>Média de Comentários</td>
+                <td>
+                  Quantidade de Comentários
+                  <span tooltip-placement="right" uib-tooltip="Quantidade de comentários em posts do Instagram no local" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.comment_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
-                <td>Média de Checkins de Madrugada</td>
+                <td>
+                  Quantidade de Checkins de Madrugada
+                  <span tooltip-placement="right" uib-tooltip="Posts feitos entre meia-noite e 6 da manhã" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.dawn_checkin_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
-                <td>Média de Checkins de Manhã</td>
+                <td>
+                  Quantidade de Checkins de Manhã
+                  <span tooltip-placement="right" uib-tooltip="Posts feitos entre 6 da manhã e meio-dia" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.morning_checkin_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
-                <td>Média de Checkins de Tarde</td>
+                <td>
+                  Quantidade de Checkins de Tarde
+                  <span tooltip-placement="right" uib-tooltip="Posts feitos entre meio-dia e 6 da tarde" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.afternoon_checkin_score}}</td>
               </tr>
               <tr ng-class="selected_algorithm=='popular_times' ? 'active' : ''">
-                <td>Média de Checkins de Noite</td>
+                <td>
+                  Quantidade de Checkins de Noite
+                  <span tooltip-placement="right" uib-tooltip="Posts feitos entre 6 da tarde e meia-noite" class="glyphicon glyphicon-question-sign"></span>
+                </td>
                 <td>{{$ctrl.score_mapping.evening_checkin_score}}</td>
               </tr>
             </tbody>
