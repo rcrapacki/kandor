@@ -75,9 +75,13 @@ a, a:hover, a:focus {
     background: #fff;
 }
 
-#sidebar ul li.active > a {
+#sidebar ul li a.active {
     color: #fff;
-    background: #6d7fcc;
+    background: #4a578e;
+}
+
+#test_mode {
+  cursor: pointer;
 }
 
 #categories {
@@ -100,6 +104,11 @@ a, a:hover, a:focus {
 
 #categories li.active > a {
   background: #4a578e !important;
+}
+
+#cluster_data tr.active td {
+  background: #4a578e !important;
+  color: white;
 }
 
 /* ---------------------------------------------------
