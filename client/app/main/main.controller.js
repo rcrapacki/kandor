@@ -500,6 +500,17 @@ class MainController {
 
       self.$timeout(function () {
           console.log("finished");
+
+          if (self.selected_algorithm == 'test') {
+            self.NgMap.getMap("map").then(function (map) {
+              map.setZoom(13);
+              for (var cluster_key in self.cluster_to_polygon_arrays) {
+                map.panTo(new google.maps.LatLng(self.cluster_to_polygon_arrays[cluster_key][0].lat, self.cluster_to_polygon_arrays[cluster_key][0].lon));
+                break;
+              }   
+            });  
+          }
+          
           self.is_loaded = true;
       }, 3000);
     });
