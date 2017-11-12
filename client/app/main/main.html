@@ -26,8 +26,7 @@
           <p>Selecione o Bairro</p>
           <div class="row">
             <form class="form-inline">
-              <select ng-model="selected_neighborhood_name" type="text" autofocus>
-                <option ng-repeat="option in $ctrl.neighborhoods" value="{{ option.name }}">{{ option.name }}</option>
+              <select ng-model="selected_neighborhood_name" ng-options="n.name as n.name for n in $ctrl.neighborhoods | orderBy:'name'" type="text" autofocus>
               </select>
               <button class="btn" ng-click="$ctrl.triggerNeighborhoods(selected_neighborhood_name, $ctrl)">
                 <span class="glyphicon glyphicon-search"></span>
@@ -105,21 +104,21 @@
                 </td>
                 <td>{{$ctrl.score_mapping.unique_user_score}}</td>
               </tr>
-              <tr ng-class="$ctrl.selected_algorithm=='rating' ? 'active' : ''">
+              <tr ng-class="$ctrl.selected_algorithm=='rating' || $ctrl.selected_algorithm=='test' ? 'active' : ''">
                 <td>
                   Avaliação Geral
                   <span tooltip-placement="right" uib-tooltip="Avaliação Geral provida pelo Google Places" class="glyphicon glyphicon-question-sign"></span>
                 </td>
                 <td>{{$ctrl.score_mapping.rating_score}}</td>
               </tr>
-              <tr ng-class="$ctrl.selected_algorithm=='rating' ? 'active' : ''">
+              <tr ng-class="$ctrl.selected_algorithm=='rating' || $ctrl.selected_algorithm=='test' ? 'active' : ''">
                 <td>
                   Soma de Avaliações Parciais
                   <span tooltip-placement="right" uib-tooltip="Soma das avaliações parciais de usuários no Google Places" class="glyphicon glyphicon-question-sign"></span>
                 </td>
                 <td>{{$ctrl.score_mapping.total_rating_score}}</td>
               </tr>
-              <tr ng-class="$ctrl.selected_algorithm=='rating' ? 'active' : ''">
+              <tr ng-class="$ctrl.selected_algorithm=='rating' || $ctrl.selected_algorithm=='test' ? 'active' : ''">
                 <td>
                   Quantidade de Avaliações
                   <span tooltip-placement="right" uib-tooltip="Quantidade de avaliações no Google Places" class="glyphicon glyphicon-question-sign"></span>
