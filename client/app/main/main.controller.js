@@ -298,82 +298,129 @@ class MainController {
 
         console.log(cluster.cluster_id);
         this.cluster_id_to_cluster_mapping[cluster.cluster_id] = cluster;
+        this.cluster_to_icon_mapping[cluster.cluster_id] = {
+              icon: {
+                url: 'http://www.googlemapsmarkers.com/v1/',
+                scaledSize: [12,18]
+              }
+            };
         switch (cluster.cluster_id % 23) {
           case 0:
             //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#660066', strokeOpacity:0.8, strokeWeight:2, fillColor: '#660066', fillOpacity:0.35}}
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#660066', fillColor: '#660066'}}; // PURPLE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#660066', fillColor: '#660066'}}; // PURPLE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/660066/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '660066/';
             break;
           case 1:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#00FF00', fillColor: '#00FF00'}}; // LIME GREEN
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#00FF00', fillColor: '#00FF00'}}; // LIME GREEN
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/00FF00/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '00FF00/';
             break;
           case 2:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#0000FF', fillColor: '#0000FF'}}; // PURE BLUE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#0000FF', fillColor: '#0000FF'}}; // PURE BLUE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/0000FF/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '0000FF/';
             break;
           case 3:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#87CEFA', fillColor: '#87CEFA'}}; //LIGHT BLUE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#87CEFA', fillColor: '#87CEFA'}}; //LIGHT BLUE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/87CEFA/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '87CEFA/';
             break;
           case 4:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#EE82EE', fillColor: '#EE82EE'}}; // PINK
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#EE82EE', fillColor: '#EE82EE'}}; // PINK
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/EE82EE/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += 'EE82EE/';
             break;
           case 5:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#FF0000', fillColor: '#FF0000'}}; // PURE RED
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#FF0000', fillColor: '#FF0000'}}; // PURE RED
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/FF0000/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += 'FF0000/';
             break;
           case 6:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#FFFF00', fillColor: '#FFFF00'}}; // YELLOW
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#FFFF00', fillColor: '#FFFF00'}}; // YELLOW
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/FFFF00/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += 'FFFF00/';
             break;
           case 7:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#006400', fillColor: '#006400'}}; //DARK GREEN 
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#006400', fillColor: '#006400'}}; //DARK GREEN 
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/006400/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '006400/';
             break;
           case 8:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#330000', fillColor: '#330000'}}; // WINE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#330000', fillColor: '#330000'}}; // WINE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/330000/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '330000/';
             break;
           case 9:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#66FF66', fillColor: '#66FF66'}}; // LIGHT GREEN
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#66FF66', fillColor: '#66FF66'}}; // LIGHT GREEN
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/66FF66/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '66FF66/';
             break;
           case 10:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#999900', fillColor: '#999900'}}; // MOSTARD
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#999900', fillColor: '#999900'}}; // MOSTARD
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/999900/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '999900/';
             break;
           case 11:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#003153', fillColor: '#003153'}}; // DARK BLUE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#003153', fillColor: '#003153'}}; // DARK BLUE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/003153/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '003153/';
             break;
           case 12:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#564E41', fillColor: '#564E41'}}; // GREY
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#564E41', fillColor: '#564E41'}}; // GREY
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/564E41/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '564E41/';
             break;
           case 13:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#FF8000', fillColor: '#FF8000'}}; // PUMPKIN
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#FF8000', fillColor: '#FF8000'}}; // PUMPKIN
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/FF8000/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += 'FF8000/';
             break;
           case 14:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#99004C', fillColor: '#99004C'}}; // DARK PINK
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#99004C', fillColor: '#99004C'}}; // DARK PINK
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/99004C/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '99004C/';
             break;
           case 15:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#009999', fillColor: '#009999'}}; // AQUA
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#009999', fillColor: '#009999'}}; // AQUA
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/009999/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '009999/';
             break;
           case 16:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#08dbb4', fillColor: '#08dbb4'}}; // LIGHT AQUA
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#08dbb4', fillColor: '#08dbb4'}}; // LIGHT AQUA
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/08dbb4/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '08dbb4/';
             break;
           case 17:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#664f00', fillColor: '#664f00'}}; // BROWN
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#664f00', fillColor: '#664f00'}}; // BROWN
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/664f00/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '664f00/';
             break;
           case 18:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#0f86d8', fillColor: '#0f86d8'}}; // COOL BLUE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#0f86d8', fillColor: '#0f86d8'}}; // COOL BLUE
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/0f86d8/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '0f86d8/';
             break;
           case 19:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#0f5f63', fillColor: '#0f5f63'}}; // DARK AQUA
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#0f5f63', fillColor: '#0f5f63'}}; // DARK AQUA
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/0f5f63/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '0f5f63/';
             break;
           case 20:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#5b206d', fillColor: '#5b206d'}}; // GRAPES
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#5b206d', fillColor: '#5b206d'}}; // GRAPES
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/5b206d/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += '5b206d/';
             break;
           case 21:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#cc40f7', fillColor: '#cc40f7'}}; // BUBBLEGUM
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#cc40f7', fillColor: '#cc40f7'}}; // BUBBLEGUM
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/cc40f7/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += 'cc40f7/';
             break;
           case 22:
-            this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#ff6600', fillColor: '#ff6600'}}; // CARROTT
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: {path: google.maps.SymbolPath.CIRCLE, scale: 3, strokeColor:'#ff6600', fillColor: '#ff6600'}}; // CARROTT
+            //this.cluster_to_icon_mapping[cluster.cluster_id] = {icon: 'http://www.googlemapsmarkers.com/v1/ff6600/'};
+            this.cluster_to_icon_mapping[cluster.cluster_id].icon.url += 'ff6600/';
             break;            
-        }
-
-        console.log(cluster.cluster_id);
-        if (cluster.cluster_id == '281') {
-          console.log('FOUND IT ' + cluster.cluster_id % 23);
         }
 
         if (cluster.meta_data.review_count_avg >= this.maxReviewCount) {
@@ -521,12 +568,22 @@ class MainController {
                              'cluster_id': cluster_id,
                              'icon': this.cluster_to_icon_mapping[cluster_id].icon,
                              'color': this.cluster_to_icon_mapping[cluster_id].color,
-                             'name': venue.insta_place.name})
+                             'name': venue.insta_place.name});
+          /*var self = this;
+          this.NgMap.getMap("map").then(function (map) {
+            var newMarker = new google.maps.Marker({
+              title: venue.insta_place.name,
+              position: new google.maps.LatLng(venue.insta_place.latitude, venue.insta_place.longitude),
+              icon: self.cluster_to_icon_mapping[cluster_id].icon,
+              map: map
+            })
+            self.markers.push(newMarker);
+          });*/
         }
       }, this);
 
       self.$timeout(function () {
-          console.log("finished");
+          console.log("finished -- markers: " + self.markers.length);
 
           if (self.selected_algorithm == 'test') {
             self.NgMap.getMap("map").then(function (map) {
