@@ -42,7 +42,7 @@
       Barra de opções
     </button>
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-8">
         <h1 class="page-header">KANDOR</h1>
           <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSDE6HlmoYd9x1_ZUXRsON-jiiUUto_k4">
             <ng-map id="map" center="-30.034647,-51.217658" zoom="10">
@@ -79,8 +79,97 @@
             </ng-map>
           </div>
         </div>
+        <div class="col-lg-4" id="cluster_data">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Medida (média entre locais)</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="active">
+                <td>
+                  Quantidade de Checkins
+                  <span tooltip-placement="right" uib-tooltip="Quantidade de Checkins no Instagram no local" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.checkin_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='category' ? 'active' : ''">
+                <td>
+                  Quantidade de Usuários
+                  <span tooltip-placement="right" uib-tooltip="Quantidades de usuários diferentes que fizeram posts no Instagram no local" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.unique_user_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='rating' || $ctrl.selected_algorithm=='test' ? 'active' : ''">
+                <td>
+                  Avaliação Geral
+                  <span tooltip-placement="right" uib-tooltip="Avaliação Geral provida pelo Google Places" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.rating_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='rating' || $ctrl.selected_algorithm=='test' ? 'active' : ''">
+                <td>
+                  Soma de Avaliações Parciais
+                  <span tooltip-placement="right" uib-tooltip="Soma das avaliações parciais de usuários no Google Places" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.total_rating_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='rating' || $ctrl.selected_algorithm=='test' ? 'active' : ''">
+                <td>
+                  Quantidade de Avaliações
+                  <span tooltip-placement="right" uib-tooltip="Quantidade de avaliações no Google Places" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.review_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='social_popularity' ? 'active' : ''">
+                <td>
+                  Quantidade de Likes
+                  <span tooltip-placement="right" uib-tooltip="Quantidade de likes em posts do Instagram no local" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.like_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='social_popularity' ? 'active' : ''">
+                <td>
+                  Quantidade de Comentários
+                  <span tooltip-placement="right" uib-tooltip="Quantidade de comentários em posts do Instagram no local" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.comment_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='popular_times' ? 'active' : ''">
+                <td>
+                  Quantidade de Checkins de Madrugada
+                  <span tooltip-placement="right" uib-tooltip="Posts feitos entre meia-noite e 6 da manhã" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.dawn_checkin_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='popular_times' ? 'active' : ''">
+                <td>
+                  Quantidade de Checkins de Manhã
+                  <span tooltip-placement="right" uib-tooltip="Posts feitos entre 6 da manhã e meio-dia" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.morning_checkin_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='popular_times' ? 'active' : ''">
+                <td>
+                  Quantidade de Checkins de Tarde
+                  <span tooltip-placement="right" uib-tooltip="Posts feitos entre meio-dia e 6 da tarde" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.afternoon_checkin_score}}</td>
+              </tr>
+              <tr ng-class="$ctrl.selected_algorithm=='popular_times' ? 'active' : ''">
+                <td>
+                  Quantidade de Checkins de Noite
+                  <span tooltip-placement="right" uib-tooltip="Posts feitos entre 6 da tarde e meia-noite" class="glyphicon glyphicon-question-sign"></span>
+                </td>
+                <td>{{$ctrl.score_mapping.evening_checkin_score}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="row">
+      <!--div class="row">
         <div class="col-md-6" id="cluster_data">
           <table class="table">
             <thead>
@@ -170,6 +259,6 @@
             </tbody>
           </table>
         </div>
-    </div>
+    </div-->
   </div>
 </div>
