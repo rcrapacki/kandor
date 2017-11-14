@@ -106,9 +106,8 @@ a, a:hover, a:focus {
   background: #4a578e !important;
 }
 
-#cluster_data tr.active td {
-  background: #4a578e !important;
-  color: white;
+#cluster_data tr:not(.active) td {
+  background: #555 !important;
 }
 
 #cluster_data table {
