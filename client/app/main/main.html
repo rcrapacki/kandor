@@ -15,7 +15,7 @@
           <a ng-click="isCategoriesCollapsed = !isCategoriesCollapsed">Categorias<span class="caret"></span></a>
           <ul id="categories" class="list-unstyled" uib-collapse="isCategoriesCollapsed">
             <li ng-class="$ctrl.selected_algorithm=='baseline' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('baseline')"><a href="#">Similaridade Social</a></li>
-            <li ng-class="$ctrl.selected_algorithm=='category' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('category')"><a href="#">Diversidade de Usuários</a></li>
+            <li ng-class="$ctrl.selected_algorithm=='category' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('category')"><a href="#">Variedade de Usuários</a></li>
             <li ng-class="$ctrl.selected_algorithm=='social_popularity' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('social_popularity')"><a href="#">Popularidade</a></li>
             <li ng-class="$ctrl.selected_algorithm=='rating' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('rating')"><a href="#">Avaliação</a></li>
             <li ng-class="$ctrl.selected_algorithm=='popular_times' ? 'active' : ''" data-toggle="tab" ng-click="$ctrl.refreshClusters('popular_times')"><a href="#">Horários de Pico</a></li>
@@ -95,9 +95,9 @@
                 </td>
                 <td>{{$ctrl.score_mapping.checkin_score}}</td>
               </tr>
-              <tr ng-show="$ctrl.selected_algorithm=='category'">
+              <tr ng-show="$ctrl.selected_algorithm=='category || $ctrl.selected_algorithm=='baseline'">
                 <td>
-                  Quantidade de Usuários
+                  Quantidade de Usuários Únicos
                   <span tooltip-placement="right" uib-tooltip="Quantidades de usuários diferentes que fizeram publicações no Instagram no local" class="glyphicon glyphicon-question-sign"></span>
                 </td>
                 <td>{{$ctrl.score_mapping.unique_user_score}}</td>
