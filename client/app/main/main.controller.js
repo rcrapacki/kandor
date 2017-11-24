@@ -216,6 +216,12 @@ class MainController {
       ctrl.score_mapping.like_score = 'Alta';
     }
 
+    if (ctrl.cluster_polygon_array.length == 2) {
+      alert("Esta região possui somente 2 locais!");
+    } else if (ctrl.cluster_polygon_array.length == 1) {
+      alert("Este local não pertence a nenhuma região!");
+    }
+
     /*ctrl.cluster_polygon_array = [
       [ctrl.cluster_to_polygon_arrays[cluster_id]['max_lat'], ctrl.cluster_to_polygon_arrays[cluster_id]['min_lon']],
       [ctrl.cluster_to_polygon_arrays[cluster_id]['min_lat'], ctrl.cluster_to_polygon_arrays[cluster_id]['min_lon']],
@@ -240,9 +246,9 @@ class MainController {
 
     if (this.selected_algorithm == 'test') {
       var clusters = [];
-      this.$http.get('/api/clusters?algorithm=rating&cluster_id=109').then(response => {
+      this.$http.get('/api/clusters?algorithm=rating&cluster_id=162').then(response => {
         clusters.push(response.data[0]);
-        this.$http.get('/api/clusters?algorithm=rating&cluster_id=166').then(response => {
+        this.$http.get('/api/clusters?algorithm=rating&cluster_id=189').then(response => {
           clusters.push(response.data[0]);
           this.buildClusters(clusters, self);
         });
@@ -629,7 +635,7 @@ class MainController {
     ctrl.neighborhood_polygon_array = hull(ctrl.selected_neighborhood.coordinates, 10000000000);
 
     this.NgMap.getMap("map").then(function (map) {
-      map.setZoom(13);
+      map.setZoom(14);
       map.panTo(new google.maps.LatLng(ctrl.selected_neighborhood.coordinates[0][0], ctrl.selected_neighborhood.coordinates[0][1]));
     });
 

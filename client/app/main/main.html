@@ -58,7 +58,7 @@
                 title="{{marker.name}}"
                 icon="{path: 'CIRCLE', scale: 2, strokeColor:'{marker.color}}', strokeOpacity:0.8, strokeWeight:2, fillColor:'{marker.color}}', fillOpacity:0.35}">
               </marker-->
-              <marker ng-if="query.cluster_id != ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers | filter: query.cluster_id:true" position="{{ marker.position }}" title="{{ marker.name }}" icon="{{ marker.icon }}"></marker>
+              <marker ng-if="query.cluster_id != ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers | filter: query.cluster_id:true" position="{{ marker.position }}" title="{{ marker.name }} - {{ marker.cluster_id}}" icon="{{ marker.icon }}"></marker>
               <marker ng-if="query.cluster_id == ''" on-click="$ctrl.triggerClusterPolygon(marker.cluster_id, $ctrl)" ng-repeat="marker in $ctrl.markers" position="{{ marker.position }}" title="{{ marker.name }}" icon="{{ marker.icon }}"></marker>
               <shape ng-if="$ctrl.cluster_polygon_array.length > 0" name="polygon" 
                 paths="{{ $ctrl.cluster_polygon_array }}"
@@ -74,7 +74,7 @@
                 stroke-opacity="0.3"
                 stroke-weight="2"
                 fill-color="#0000FF"
-                fill-opacity="0.10">
+                fill-opacity="0.30">
               </shape>
             </ng-map>
           </div>
