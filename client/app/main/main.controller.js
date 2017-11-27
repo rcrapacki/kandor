@@ -58,6 +58,20 @@ class MainController {
     return d;
   }
 
+  getRelativeMeasure = function(global_min, global_avg, global_max, avg) {
+    var diff_to_min = Math.abs(avg - global_min);
+    var diff_to_avg = Math.abs(avg - global_avg);
+    var diff_to_max = Math.abs(avg - global_max);
+
+    if (diff_to_min < diff_to_avg && diff_to_min < diff_to_max) {
+      return 'Baixa';
+    } else if (diff_to_avg <= diff_to_max) {
+      return 'Média';
+    } else {
+      return 'Alta';
+    }
+  }
+
   triggerClusterPolygon = function(events, cluster_id, ctrl) {
     if (ctrl.selected_cluster == null) {
       ctrl.selected_cluster = ctrl.cluster_id_to_cluster_mapping[cluster_id]
@@ -84,137 +98,17 @@ class MainController {
 
     ctrl.score_mapping = {};
 
-    var diffToMin = Math.abs(ctrl.selected_cluster.meta_data.review_count_avg - ctrl.minReviewCount);
-    var diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.review_count_avg - ctrl.avgReviewCount);
-    var diffToMax = Math.abs(ctrl.selected_cluster.meta_data.review_count_avg - ctrl.maxReviewCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.review_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.review_score = 'Média';
-    } else {
-      ctrl.score_mapping.review_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.checkin_count_avg - ctrl.minCheckinCount);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.checkin_count_avg - ctrl.avgCheckinCount);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.checkin_count_avg - ctrl.maxCheckinCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.checkin_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.checkin_score = 'Média';
-    } else {
-      ctrl.score_mapping.checkin_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.total_rating_avg - ctrl.minTotalRating);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.total_rating_avg - ctrl.avgTotalRating);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.total_rating_avg - ctrl.maxTotalRating);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.total_rating_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.total_rating_score = 'Média';
-    } else {
-      ctrl.score_mapping.total_rating_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.rating_avg - ctrl.minRating);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.rating_avg - ctrl.avgRating);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.rating_avg - ctrl.maxRating);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.rating_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.rating_score = 'Média';
-    } else {
-      ctrl.score_mapping.rating_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.morning_checkin_count_avg - ctrl.minMorningCheckinCount);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.morning_checkin_count_avg - ctrl.avgMorningCheckinCount);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.morning_checkin_count_avg - ctrl.maxMorningCheckinCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.morning_checkin_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.morning_checkin_score = 'Média';
-    } else {
-      ctrl.score_mapping.morning_checkin_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.dawn_checkin_count_avg - ctrl.minDawnCheckinCount);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.dawn_checkin_count_avg - ctrl.avgDawnCheckinCount);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.dawn_checkin_count_avg - ctrl.maxDawnCheckinCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.dawn_checkin_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.dawn_checkin_score = 'Média';
-    } else {
-      ctrl.score_mapping.dawn_checkin_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg - ctrl.minAfternoonCheckinCount);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg - ctrl.avgAfternoonCheckinCount);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg - ctrl.maxAfternoonCheckinCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.afternoon_checkin_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.afternoon_checkin_score = 'Média';
-    } else {
-      ctrl.score_mapping.afternoon_checkin_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.evening_checkin_count_avg - ctrl.minEveningCheckinCount);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.evening_checkin_count_avg - ctrl.avgEveningCheckinCount);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.evening_checkin_count_avg - ctrl.maxEveningCheckinCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.evening_checkin_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.evening_checkin_score = 'Média';
-    } else {
-      ctrl.score_mapping.evening_checkin_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.comment_count_avg - ctrl.minCommentCount);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.comment_count_avg - ctrl.avgCommentCount);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.comment_count_avg - ctrl.maxCommentCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.comment_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.comment_score = 'Média';
-    } else {
-      ctrl.score_mapping.comment_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.unique_users_count_avg - ctrl.minUniqueUserCount);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.unique_users_count_avg - ctrl.avgUniqueUserCount);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.unique_users_count_avg - ctrl.maxUniqueUserCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.unique_user_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.unique_user_score = 'Média';
-    } else {
-      ctrl.score_mapping.unique_user_score = 'Alta';
-    }
-
-    diffToMin = Math.abs(ctrl.selected_cluster.meta_data.like_count_avg - ctrl.minLikeCount);
-    diffToAvg = Math.abs(ctrl.selected_cluster.meta_data.like_count_avg - ctrl.avgLikeCount);
-    diffToMax = Math.abs(ctrl.selected_cluster.meta_data.like_count_avg - ctrl.maxLikeCount);
-
-    if (diffToMin < diffToAvg && diffToMin < diffToMax) {
-      ctrl.score_mapping.like_score = 'Baixa';
-    } else if (diffToAvg <= diffToMax) {
-      ctrl.score_mapping.like_score = 'Média';
-    } else {
-      ctrl.score_mapping.like_score = 'Alta';
-    }
+    ctrl.score_mapping.review_score = ctrl.getRelativeMeasure(ctrl.minReviewCount, ctrl.avgReviewCount, ctrl.maxReviewCount, ctrl.selected_cluster.meta_data.review_count_avg);
+    ctrl.score_mapping.checkin_score = ctrl.getRelativeMeasure(ctrl.minCheckinCount, ctrl.avgCheckinCount, ctrl.maxCheckinCount, ctrl.selected_cluster.meta_data.checkin_count_avg);
+    ctrl.score_mapping.total_rating_score = ctrl.getRelativeMeasure(ctrl.minTotalRating, ctrl.avgTotalRating, ctrl.maxTotalRating, ctrl.selected_cluster.meta_data.total_rating_avg);
+    ctrl.score_mapping.rating_score = ctrl.getRelativeMeasure(ctrl.minRating, ctrl.avgRating, ctrl.maxRating, ctrl.selected_cluster.meta_data.rating_avg);
+    ctrl.score_mapping.morning_checkin_score = ctrl.getRelativeMeasure(ctrl.minMorningCheckinCount, ctrl.avgMorningCheckinCount, ctrl.maxMorningCheckinCount, ctrl.selected_cluster.meta_data.morning_checkin_count_avg);
+    ctrl.score_mapping.dawn_checkin_score = ctrl.getRelativeMeasure(ctrl.minDawnCheckinCount, ctrl.avgDawnCheckinCount, ctrl.maxDawnCheckinCount, ctrl.selected_cluster.meta_data.dawn_checkin_count_avg);
+    ctrl.score_mapping.afternoon_checkin_score = ctrl.getRelativeMeasure(ctrl.minAfternoonCheckinCount, ctrl.avgAfternoonCheckinCount, ctrl.maxAfternoonCheckinCount, ctrl.selected_cluster.meta_data.afternoon_checkin_count_avg);
+    ctrl.score_mapping.evening_checkin_score = ctrl.getRelativeMeasure(ctrl.minEveningCheckinCount, ctrl.avgEveningCheckinCount, ctrl.maxEveningCheckinCount, ctrl.selected_cluster.meta_data.evening_checkin_count_avg);
+    ctrl.score_mapping.comment_score = ctrl.getRelativeMeasure(ctrl.minCommentCount, ctrl.avgCommentCount, ctrl.maxCommentCount, ctrl.selected_cluster.meta_data.comment_count_avg);
+    ctrl.score_mapping.unique_user_score = ctrl.getRelativeMeasure(ctrl.minUniqueUserCount, ctrl.avgUniqueUserCount, ctrl.maxUniqueUserCount, ctrl.selected_cluster.meta_data.unique_users_count_avg);
+    ctrl.score_mapping.like_score = ctrl.getRelativeMeasure(ctrl.minLikeCount, ctrl.avgLikeCount, ctrl.maxLikeCount, ctrl.selected_cluster.meta_data.like_count_avg);
 
     if (ctrl.cluster_polygon_array.length == 2) {
       alert("Esta região possui somente 2 locais!");
